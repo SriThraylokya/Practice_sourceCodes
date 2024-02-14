@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class ToDoList {
+
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    List<String> toDoList = new ArrayList<>();
+
+    while (true) {
+      System.out.println();
+      System.out.println("1. Add item");
+      System.out.println("2. Remove item");
+      System.out.println("3. View list");
+      System.out.println("4. Quit");
+      System.out.print("Enter your choice: ");
+      int choice = scanner.nextInt();
+
+      if (choice == 1) {
+        System.out.print("Enter the item to add: ");
+        scanner.nextLine();
+        toDoList.add(scanner.nextLine());
+      } else if (choice == 2) {
+        System.out.print("Enter the index of the item to remove: ");
+        int index = scanner.nextInt();
+        if (index >= 0 && index < toDoList.size()) {
+          toDoList.remove(index);
+        } else {
+          System.out.println("Invalid index");
+        }
+      } else if (choice == 3) {
+        System.out.println();
+        System.out.println("Your to-do list:");
+        int index = 1;
+        for (String item : toDoList) {
+          System.out.println(index++ + ". " + item);
+        }
+      } else if (choice == 4) {
+        System.out.println();
+        System.out.println("Thanks for using the to-do list!");
+        break;
+      } else {
+        System.out.println("Invalid choice");
+      }
+    }
+
+    scanner.close();
+  }
+}
